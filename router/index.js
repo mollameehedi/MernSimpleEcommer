@@ -3,6 +3,10 @@ const router = express.Router();
 const api = require("./api")
 
 const baseurl = process.env.BASE_URL
+
 router.use(baseurl,api);
+router.use(baseurl,(req,res)=>{
+    res.status(404).send({error:'No api found on this route'})
+})
 
 module.exports = router
