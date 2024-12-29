@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const auth = require("./auth")
+const api = require("./api")
 
 const baseurl = process.env.BASE_URL
-router.use(baseurl,auth);
+router.use(baseurl,api);
 
 module.exports = router
