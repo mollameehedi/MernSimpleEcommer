@@ -35,8 +35,12 @@ async function loginController(req,res) {
         bcrypt.compare(password, existinguser.password, async function(err, result) {
             
             if(result){
-                const { password, ...userData } = existinguser;            
-                let token = jwt.sign({ userData }, process.env.jwt_secret,{ expiresIn: '1d' });
+                const { password, ...userData } = existinguser;  
+                let   expireTime = '1d';
+                if(existinguser.role == 'admin'){
+                    expireTime = '1h'
+                }
+                let token = jwt.sign({ userData }, process.env.jwt_secret,{ expiresIn: expireTime });
                 return res.status(200).send({data:userData,message:'Login Successfully!!',token})
             }
            console.log(result);
