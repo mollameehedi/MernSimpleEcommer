@@ -34,6 +34,10 @@ let userSchema = new Schema({
     images:{
         type:String,
     },
+    isVerify:{
+        type:Boolean,
+        default:false,
+    },
     
 },{
     timestamps:true
