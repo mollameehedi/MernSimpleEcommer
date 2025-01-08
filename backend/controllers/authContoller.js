@@ -47,7 +47,7 @@ async function loginController(req,res) {
            
         });
        }else{
-        return res.status(400).send({error:'Something went wron!!'})
+        return res.status(400).send({error:'Something went wrong !!'})
        }
     
 }
