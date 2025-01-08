@@ -1,3 +1,4 @@
+const sendEmail = require("../helpers/SendEmail");
 const EmailValidateCheck = require("../helpers/ValidateEmail");
 const userModel = require("../model/userModel");
 const bcrypt = require('bcrypt');
@@ -7,7 +8,6 @@ async function registrationController(req,res) {
 
    let {name,email,password} = req.body
    
-
    let existinguser = await userModel.findOne({email});
 
    if(existinguser){
@@ -16,10 +16,18 @@ async function registrationController(req,res) {
 
     try {
         bcrypt.hash(password, 10, async function(err, hash) {
+            let otp = Math.floor((Math.random() * 10000) + 10000)
+
             let user = new userModel({
-                name,email,password:hash
+                name,email,password:hash,
+                otp:otp
             })
             await user.save();
+            sendEmail(email)
+            setTimeout( async ()=>{
+                user.otp = null
+                await user.save()
+            },5000)
             res.send(user)
         });
     } catch (error) {
