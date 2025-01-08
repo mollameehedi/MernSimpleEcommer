@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 let jwt = require('jsonwebtoken');
 
 async function registrationController(req,res) {
+
    let {name,email,password} = req.body
    
 
@@ -21,8 +22,6 @@ async function registrationController(req,res) {
             await user.save();
             res.send(user)
         });
-
-       ;
     } catch (error) {
       res.status(500).send({error})
     }
@@ -38,9 +37,13 @@ async function loginController(req,res) {
                 const { password, ...userData } = existinguser;  
                 let   expireTime = '1d';
                 if(existinguser.role == 'admin'){
-                    expireTime = '1h'
+                    expireTime = '1s'
                 }
                 let token = jwt.sign({ userData }, process.env.jwt_secret,{ expiresIn: expireTime });
+                res.cookie('token',token,{
+                    httpOnly:true,
+                    secure:false
+                });
                 return res.status(200).send({data:userData,message:'Login Successfully!!',token})
             }
            console.log(result);
