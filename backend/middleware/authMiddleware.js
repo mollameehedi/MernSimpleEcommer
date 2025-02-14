@@ -9,7 +9,7 @@ function authMiddleware(req,res,next) {
             }else{
                 let{role} = decoded.userData
                 if(role == 'admin'){
-                   next() 
+                   next()  
                 }else{
                     return res.status(401).send({success:false,message:'access denied'})
                 }
