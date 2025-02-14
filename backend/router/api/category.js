@@ -17,13 +17,24 @@ const storage = multer.diskStorage({
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
 
       let extention = file.originalname.split(".")
-      cb(null, file.fieldname + '-' + uniqueSuffix + `.${extention[1]}`)
+      cb(null, file.fieldname + '-' + uniqueSuffix + `.${extention[extention.length - 1]}`)
     }
   })
   
-  const upload = multer({ storage: storage })
+  const upload = multer({ storage: storage,
+    limits:{
+      fileSize:5 * 1024 * 1024 
+    }
+   })
 
-router.post("/create",upload.single('image'),createcategory)
+   function errCheck(err,req,res,next) {
+    if(err){
+      return res.status(500).send({success:false,message:err.message})
+    }
+    next()
+   }
+
+router.post("/create",upload.single('image'),errCheck,createcategory)
 
 
 

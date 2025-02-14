@@ -23,4 +23,4 @@ let categorySchema = new Schema({
     timestamps:true
 })
 
-module.exports = mongoose.model('Category',userSchema);
+module.exports = mongoose.model('Category',categorySchema);
