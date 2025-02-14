@@ -45,7 +45,7 @@ async function loginController(req,res) {
                 const { password, ...userData } = existinguser;  
                 let   expireTime = '1d';
                 if(existinguser.role == 'admin'){
-                    expireTime = '1s'
+                    expireTime = '1d'
                 }
                 let token = jwt.sign({ userData }, process.env.jwt_secret,{ expiresIn: expireTime });
                 res.cookie('token',token,{
