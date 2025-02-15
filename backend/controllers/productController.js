@@ -3,7 +3,7 @@ const productModel = require('../model/productModel')
 async function createProduct(req,res) {
     let {name,description,category,stock,sellingPrice,discountPrice} = req.body
     
-    let images = req.files.map((item) => `/product/${item.filename}`)
+    let images = req.files.map((item) => `/${item.filename}`)
     
     try {
     let product = new productModel({

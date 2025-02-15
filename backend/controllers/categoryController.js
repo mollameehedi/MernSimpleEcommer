@@ -1,5 +1,6 @@
 
  const categoryModel = require("../model/categoryModel")
+const fs = require('fs')
 
 async function createcategory(req,res){
 
@@ -14,5 +15,23 @@ async function createcategory(req,res){
     await category.save()
     return res.status(201).send({success:true,message:'Category Created Successfully!'})
 }
+async function deleteCategory(req,res){
 
-module.exports ={ createcategory};
+    let {id} = req.params
+    
+    try {
+        let category = await  categoryModel.findOneAndDelete({_id:id})
+        fs.unlink(`uploads/${category.image}`,(err) => {
+            if(err){
+                return res.status(500).send({success:false,message:err.message}) 
+            }
+        })
+    } catch (error) {
+        return res.status(500).send({success:false,message:error.message})
+    }
+  
+    
+    return res.status(201).send({success:true,message:'Category Deleted Successfully!'})
+}
+
+module.exports ={ createcategory,deleteCategory};
