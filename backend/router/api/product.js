@@ -1,11 +1,12 @@
 const express = require('express');
-const { createcategory } = require('../../controllers/categoryController');
 const multer  = require('multer')
 const path = require('path');
+const {createProduct} = require('../../controllers/productController')
 
 const router = express.Router();
 
-const uploadsDir = path.join(__dirname, '../../uploads/category'); // Relative path!
+
+const uploadsDir = path.join(__dirname, '../../uploads/product'); // Relative path!
 const fs = require('fs');
 fs.mkdirSync(uploadsDir, { recursive: true });
 
@@ -25,6 +26,7 @@ const storage = multer.diskStorage({
     limits:{
       fileSize:5 * 1024 * 1024 
     }
+    
    })
 
    function errCheck(err,req,res,next) {
@@ -34,7 +36,7 @@ const storage = multer.diskStorage({
     next()
    }
 
-router.post("/create",upload.single('image'),errCheck,createcategory)
+router.post("/create",upload.array('image'),errCheck,createProduct)
 
 
 
