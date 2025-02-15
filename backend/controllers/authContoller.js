@@ -24,10 +24,10 @@ async function registrationController(req,res) {
             })
             await user.save();
             sendEmail(email)
-            setTimeout( async ()=>{
-                user.otp = null
-                await user.save()
-            },5000)
+            // setTimeout( async ()=>{
+            //     user.otp = null
+            //     await user.save()
+            // },5000)
             res.send(user)
         });
     } catch (error) {
@@ -62,5 +62,45 @@ async function loginController(req,res) {
        }
     
 }
+async function otpverifyController(req,res){
+ let {email,otp } = req.body
 
-module.exports ={ registrationController,loginController};
+ const existinguser = await userModel.findOne({email});
+
+ if(existinguser){
+    console.log(existinguser,otp);
+    
+   if(existinguser.otp == otp){
+        existinguser.otp = null;
+        existinguser.isVerify = true;
+        await  existinguser.save()
+        return res.status(200).send({success:true,message:"Otp Verify successfully"})
+   }
+   else{
+    return res.status(404).send({success:false,message:"Invalid otp"})
+ }
+ }
+ else{
+    return res.status(404).send({success:false,message:"invalid email"})
+ }
+
+    return res.send(existinguser);
+}
+async function resendOtpController(req,res){
+ let {email} = req.body
+ const existinguser = await userModel.findOne({email});
+ if(existinguser){
+    console.log(existinguser);
+    let otp = Math.floor((Math.random() * 10000) + 10000)
+    existinguser.otp = otp
+   await existinguser.save()
+   sendEmail(email)
+ }
+ else{
+    return res.status(404).send({success:false,message:"invalid email"})
+ }
+
+    return res.send(email);
+}
+
+module.exports ={ registrationController,loginController,otpverifyController,resendOtpController};
