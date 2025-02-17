@@ -1,4 +1,5 @@
 const deleteFile = require('../helpers/deleteFile')
+const categoryModel = require('../model/categoryModel')
 const productModel = require('../model/productModel')
 
 async function createProduct(req,res) {
@@ -12,6 +13,12 @@ async function createProduct(req,res) {
     })
     
     await product.save()
+
+    await categoryModel.findOneAndUpdate(
+        {_id:category},
+        {$push:{product:product._id}},
+        {new:true}
+    )
 } catch (error) {
     return res.status(500).send({success:false,message:error.message})
 }

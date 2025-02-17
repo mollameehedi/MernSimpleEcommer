@@ -9,7 +9,7 @@ router.post("/create",upload.array('image'),errCheck,createProduct)
 router.delete("/delete/:id",deleteProduct)
 router.get("/allproduct",allProduct)
 router.get("/single/:id",singleProduct)
-router.patch("/create",upload.array('image'),errCheck,updateProduct)
+router.patch("/update",upload.array('image'),errCheck,updateProduct)
 
 
 
