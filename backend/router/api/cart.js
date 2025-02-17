@@ -1,12 +1,12 @@
 const express = require('express');
-const { addtoCart,allCart } = require('../../controllers/cartController');
+const { addtoCart,getUserCart } = require('../../controllers/cartController');
 
 
 
 const router = express.Router();
 
 router.post("/addtocart",addtoCart)
-router.get("/allcart",allCart)
+router.get("/usercart/:user_id",getUserCart)
 
 
 
