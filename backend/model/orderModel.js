@@ -13,7 +13,7 @@ let cartSchema = new Schema({
         type:string,
         enum:["paid","unpaid"],
         default:"unpaid"
-    },
+    }, 
     totalPrice:{
         type:Number,
     },
