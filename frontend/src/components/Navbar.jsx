@@ -17,7 +17,7 @@ import {
   PowerIcon,
   Bars2Icon,
 } from "@heroicons/react/24/solid";
-import { FaCartPlus,FaShoppingBag } from "react-icons/fa";
+import { FaCartPlus,FaShoppingBag,FaHome  } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 
@@ -100,6 +100,10 @@ function ProfileMenu() {
 // nav list component
 const navListItems = [
   {
+    label: "Home",
+    icon: FaHome,
+  },
+  {
     label: "Shop",
     icon: FaShoppingBag,
   },
@@ -149,7 +153,7 @@ export function EcommerceNavbar() {
   }, []);
  
   return (
-    <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6 font-roboto">
+    <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6 font-roboto shadow-none">
       <div className="relative mx-auto flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
