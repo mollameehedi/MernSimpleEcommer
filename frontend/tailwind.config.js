@@ -17,7 +17,11 @@ module.exports = withMT({
       container: {
         center: true,
         screens:{
-          xl:"1170px",
+          sm:"668",
+          md:"992px",
+          lg:"1020px",
+          xl:"1200px",
+          "2xl":"1400px",
 
         }
       },
