@@ -17,7 +17,7 @@ import {
   PowerIcon,
   Bars2Icon,
 } from "@heroicons/react/24/solid";
-import { FaCartPlus,FaShoppingBag,FaHome  } from "react-icons/fa";
+import { FaCartPlus,FaShoppingBag,FaHome,FaInfoCircle  } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
 
@@ -102,18 +102,28 @@ const navListItems = [
   {
     label: "Home",
     icon: FaHome,
+    href:'/'
+  },
+  {
+    label: "About",
+    icon: FaInfoCircle,
+    href:'/about'
   },
   {
     label: "Shop",
     icon: FaShoppingBag,
+    href:'/shop'
   },
+  
   {
     label: "contact",
     icon: MdEmail,
+    href:'/contact'
   },
   {
     label: "Cart",
     icon: FaCartPlus,
+    href:'/cart'
   },
 ];
  
@@ -121,11 +131,11 @@ function NavList() {
   return (
     <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
     
-      {navListItems.map(({ label, icon }, key) => (
+      {navListItems.map(({ label, icon,href }, key) => (
         <Typography
-          key={label}
+          key={key}
           as="a"
-          href="#"
+          href={href}
           variant="small"
           color="gray"
           className="font-medium text-blue-gray-500"
