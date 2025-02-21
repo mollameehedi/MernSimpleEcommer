@@ -11,7 +11,8 @@ module.exports = withMT({
         primary: '#000',
       },
       fontFamily: {
-        poppins: ["Poppins", "serif"],
+        roboto: [ "Roboto", "serif"],
+        openSans: ["Open Sans", "serif"],
       },
       container: {
         center: true,
