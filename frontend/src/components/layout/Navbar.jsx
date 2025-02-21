@@ -19,6 +19,9 @@ import {
 } from "@heroicons/react/24/solid";
 import { FaCartPlus,FaShoppingBag,FaHome,FaInfoCircle  } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import logo from '../../assets/logo.png';
+import Image from "../utils/Image";
+import Container from "../utils/Container";
 
 
  
@@ -163,14 +166,15 @@ export function EcommerceNavbar() {
   }, []);
  
   return (
-    <Navbar className="mx-auto max-w-screen-xl p-2 lg:rounded-full lg:pl-6 font-roboto shadow-none">
+    <nav className="bg-white p-2   lg:pl-6 font-roboto shadow-none">
+      <Container>
       <div className="relative mx-auto flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
           href="#"
           className="mr-4 ml-2 cursor-pointer py-1.5 font-medium font-roboto"
         >
-        Gulistan
+        <Image src={logo} className="h-[45px]"/>
         </Typography>
         <div className="hidden lg:block mx-auto">
           <NavList />
@@ -201,6 +205,7 @@ export function EcommerceNavbar() {
       <MobileNav open={isNavOpen} className="overflow-scroll">
         <NavList />
       </MobileNav>
-    </Navbar>
+      </Container>
+    </nav>
   );
 }
