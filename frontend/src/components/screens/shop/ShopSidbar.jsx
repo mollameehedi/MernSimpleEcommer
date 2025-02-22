@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaAlignJustify } from "react-icons/fa";
 import { Slider } from "@material-tailwind/react";
 
+
 const ShopSidbar = () => {
+ 
   return (
     <div className='bg-white me-3 p-5 rounded-md'>
-  <h3 className='text-xl font-bold text-primary font-roboto text-center flex items-center' ><FaAlignJustify className='text-lg me-3'/>Categories</h3> 
+  <h3 className='text-xl font-bold text-primary font-roboto flex justify-between' ><span className=' text-center flex items-center'><FaAlignJustify className='text-lg me-3'/>Categories</span>  </h3> 
   <div className="mt-4">
         <ul className="mt-2">
           <li>
