@@ -22,6 +22,7 @@ import { MdEmail } from "react-icons/md";
 import logo from '../../assets/logo.png';
 import Image from "../utils/Image";
 import Container from "../utils/Container";
+import { Link } from "react-router-dom";
 
 
  
@@ -191,9 +192,9 @@ export function EcommerceNavbar() {
         </IconButton>
  <div>
   {true ? (
-     <Button size="sm" variant="text">
+     <Link to="login" size="sm" variant="text">
      <span>Log In</span>
-   </Button>
+   </Link>
   ): (
 
         <ProfileMenu />

@@ -1,6 +1,7 @@
 import { Typography } from "@material-tailwind/react";
 import logo from '../../assets/logo.png'
 import Container from "../utils/Container";
+import { Link } from "react-router-dom";
 
  
 export function Footer() {
@@ -11,34 +12,34 @@ export function Footer() {
         <img src={logo} alt="logo-ct" className="w-[200px]" />
         <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
           <li>
-            <Typography
+            <Link
               as="a"
-              href="#"
+              to="/about"
               color="blue-gray"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               About Us
-            </Typography>
+            </Link>
           </li>
           <li>
-            <Typography
+            <Link
               as="a"
-              href="#"
+              to="/shop"
               color="blue-gray"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               Shop
-            </Typography>
+            </Link>
           </li>
           <li>
-            <Typography
+            <Link
               as="a"
-              href="#"
+              to="/contact"
               color="blue-gray"
               className="font-normal transition-colors hover:text-blue-500 focus:text-blue-500"
             >
               Contact Us
-            </Typography>
+            </Link>
           </li>
         </ul>
       </div>
