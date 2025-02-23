@@ -11,12 +11,17 @@ module.exports = withMT({
         primary: '#000',
       },
       fontFamily: {
-        poppins: ["Poppins", "serif"],
+        roboto: [ "Roboto", "serif"],
+        openSans: ["Open Sans", "serif"],
       },
       container: {
         center: true,
         screens:{
-          xl:"1170px",
+          sm:"668",
+          md:"992px",
+          lg:"1020px",
+          xl:"1200px",
+          "2xl":"1400px",
 
         }
       },
