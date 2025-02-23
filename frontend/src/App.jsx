@@ -5,6 +5,7 @@ import RootLayout from './components/layout/RootLayout';
 import About from './pages/About';
 import Shop from './pages/shop';
 import Login from './pages/login';
+import Registration from './pages/Registration';
 
 
 const router = createBrowserRouter(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route path='/shop' element={<Shop/>}></Route>
       <Route path='/about' element={<About/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
+      <Route path='/registration' element={<Registration/>}></Route>
   </Route>
   ))
 const App = () => {
