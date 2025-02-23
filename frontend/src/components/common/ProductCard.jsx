@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ProductCard = () => {
   return (
     <div className="bg-white flex flex-col overflow-hidden cursor-pointer hover:shadow-md transition-all">
+      <Link to="/product/details/slug">
+      
           <div className="w-full">
             <img src="https://readymadeui.com/images/fashion-img-1.webp" alt="Product 1"
               className="w-full rounded object-cover object-top aspect-[180/200]" />
@@ -53,6 +56,7 @@ const ProductCard = () => {
               <button type="button" className="text-sm px-2 min-h-[36px] w-full bg-black hover:bg-gray-700 text-white tracking-wide ml-auto outline-none border-none rounded">Add to cart</button>
             </div>
           </div>
+          </Link>
         </div>
   )
 }
